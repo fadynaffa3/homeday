@@ -3,9 +3,9 @@ class CreateNpsFeedbacks < ActiveRecord::Migration[6.0]
     create_table :nps_feedbacks do |t|
       t.integer :score
       t.string  :touchpoint
-      t.string  :respondent_class
+      t.string  :respondent_type
       t.integer :respondent_id
-      t.string  :object_class
+      t.string  :object_type
       t.integer :object_id
 
       t.timestamps

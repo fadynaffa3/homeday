@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 2019_12_07_093234) do
   create_table "nps_feedbacks", force: :cascade do |t|
     t.integer "score"
     t.string "touchpoint"
-    t.string "respondent_class"
+    t.string "respondent_type"
     t.integer "respondent_id"
-    t.string "object_class"
+    t.string "object_type"
     t.integer "object_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
