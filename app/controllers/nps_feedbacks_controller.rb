@@ -1,0 +1,2 @@
+class NpsFeedbacksController < ApplicationController
+end
