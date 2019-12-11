@@ -1,4 +1,12 @@
 class ApplicationController < ActionController::API
+  rescue_from CanCan::AccessDenied do |exception|
+    render(json: { errors: [status: 401, title: 'Not Authorized']}, status: 401)
+  end
+
+  def render_resources(resources)
+    render json: resources
+  end
+
   def render_resource(resource)
     if resource.errors.empty?
       render json: resource
