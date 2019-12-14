@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_114629) do
+ActiveRecord::Schema.define(version: 2019_12_14_131339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "deals", force: :cascade do |t|
+    t.bigint "property_id", null: false
+    t.bigint "realtor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_deals_on_property_id"
+    t.index ["realtor_id"], name: "index_deals_on_realtor_id"
+  end
 
   create_table "jwt_blacklist", force: :cascade do |t|
     t.string "jti", null: false
@@ -31,6 +40,14 @@ ActiveRecord::Schema.define(version: 2019_12_07_114629) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "properties", force: :cascade do |t|
+    t.integer "owner_id"
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -44,4 +61,6 @@ ActiveRecord::Schema.define(version: 2019_12_07_114629) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "deals", "properties"
+  add_foreign_key "deals", "users", column: "realtor_id"
 end

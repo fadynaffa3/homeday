@@ -3,15 +3,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  before_create :add_default_class_name
+  self.inheritance_column = :class_name
 
-  def class_name
-    read_attribute(:class_name) || 'Seller'
-  end
-
-  private
-
-  def add_default_class_name
-    self.class_name = class_name
-  end
+  validates :class_name, inclusion: { in: %w[Seller HomedayUser Realtor] }
 end
