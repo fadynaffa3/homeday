@@ -22,11 +22,15 @@ class Ability
 
   def seller_abilities
     can :manage, Property, owner_id: @user.id
-    can :read, NpsFeedback, respondent_class: 'Realtor', respondent_id: @user.id
+    can %i[read update], NpsFeedback, respondent_type: %w[Seller User], respondent_id: @user.id
     can %i[create update read], Deal, property_id: @user.properties.ids
+    can :read, Realtor
   end
 
   def realtor_abilities
     can %i[update read], Deal, realtor_id: @user.id
+    can %i[read update], NpsFeedback, respondent_type: %w[Realtor User], respondent_id: @user.id
+    can :read, Property, id: Deal.accessible_by(self).pluck(:property_id)
+    can :read, Seller, id: Deal.accessible_by(self).pluck(:seller_id)
   end
 end

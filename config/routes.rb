@@ -13,5 +13,9 @@ Rails.application.routes.draw do
       registrations: 'registrations',
     })
 
-  resources :nps_feedbacks
+  resources :properties
+  resources :deals
+  resources :sellers, only: %i[index show]
+  resources :realtors, only: %i[index show]
+  resources :nps_feedbacks, only: %i[index show update]
 end

@@ -1,0 +1,2 @@
+class RealtorsController < CrudController
+end
