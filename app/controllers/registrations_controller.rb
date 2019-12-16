@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  include ApiResponses
+
   respond_to :json
 
   def create

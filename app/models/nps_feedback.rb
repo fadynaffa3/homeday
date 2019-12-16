@@ -3,6 +3,7 @@ class NpsFeedback < ApplicationRecord
   belongs_to :object, polymorphic: true
 
   validates :touchpoint, presence: true
+  validates :touchpoint, uniqueness: { scope: [:object, :respondent] }
   validates_numericality_of :score, :only_integer => true, :allow_nil => true,
     :greater_than_or_equal_to => 1,
     :less_than_or_equal_to => 10,

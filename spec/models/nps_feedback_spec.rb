@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe NpsFeedback, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Associations' do
+    it { is_expected.to belong_to(:object) }
+    it { is_expected.to belong_to(:respondent) }
+  end
 end

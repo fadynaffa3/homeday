@@ -4,6 +4,8 @@ class Deal < ApplicationRecord
 
   after_create :send_nps
 
+  validates :property_id, uniqueness: { scope: [:realtor_id] }
+
   private
 
   def send_nps

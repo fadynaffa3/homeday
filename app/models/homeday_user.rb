@@ -1,0 +1,2 @@
+class HomedayUser < User
+end

@@ -25,6 +25,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cancancan'
 gem 'devise'
 gem 'devise-jwt'
+gem 'json-schema'
 gem 'jwt'
 gem 'rack-cors'
 
@@ -36,8 +37,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
   gem 'fabrication'
   gem 'faker'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do

@@ -1,5 +1,5 @@
-Fabricator(:user) do
+Fabricator(:realtor) do
   email { Faker::Internet.email }
   password 12345678
-  class_name 'HomedayUser'
+  class_name 'Realtor'
 end
